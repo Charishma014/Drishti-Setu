@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #0E1214;
+    --bg-card: #141A1D;
+    --bg-card-elevated: #1C2428;
+    --border-subtle: #222B30;
+    --border-active: #3A4B54;
+    --retinal-red: #D95338;
+    --retinal-red-hover: #E65A3C;
+    --medical-teal: #2EC4B6;
+    --medical-amber: #E09F3E;
+    --text-primary: #F7F4EE;
+    --text-muted: #8D99AE;
+  }
+
+  body {
+    background-color: #0E1214;
+    color: #F7F4EE;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Outfit', 'Inter', sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0E1214;
+}
+::-webkit-scrollbar-thumb {
+  background: #263138;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3A4B54;
+}
+
+/* Hide scrollbar for step navigation */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Medical Pulse Glow */
+@keyframes retinalGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(217, 83, 56, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(217, 83, 56, 0.45);
+  }
+}
+
+.retinal-pulse {
+  animation: retinalGlow 3s infinite ease-in-out;
+}
+
+/* Print Stylesheet for Screening Report */
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  header, nav, footer, button, .print\:hidden {
+    display: none !important;
+  }
+  .print\:bg-white {
+    background-color: #FFFFFF !important;
+  }
+  .print\:text-black {
+    color: #000000 !important;
+  }
+}
